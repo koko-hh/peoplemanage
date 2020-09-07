@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.koko.dao.PeopleMapper">
+    <!--增加-->
+    <insert id="addpeople" parameterType="People">
+        insert into ssmbuild.people(name, age, say)
+        values (#{name},#{age},#{say})
+    </insert>
+
+    <!--删除-->
+    <delete id="delepeople" parameterType="int">
+        delete from ssmbuild.people where id=#{id}
+    </delete>
+
+    <!--改-->
+    <update id="updatepeople" parameterType="People">
+        update ssmbuild.people
+        set name=#{name},age=#{age},say=#{say}
+        where id=#{id};
+    </update>
+
+    <!--查全部-->
+    <select id="querypeople"  resultType="People">
+        select * from ssmbuild.people
+    </select>
+
+    <!--根据名字查询-->
+    <select id="querypeolebyname" resultType="People">
+        select * from ssmbuild.people where name=#{name}
+    </select>
+
+    <!--根据Id查询-->
+    <select id="querypeoplebyid" resultType="People">
+        select * from ssmbuild.people where id = #{id}
+    </select>
+
+
+</mapper>
